@@ -1,4 +1,4 @@
-package com.github.laefye.tools;
+package com.github.laefye.craft;
 
 import org.bukkit.craftbukkit.v1_20_R2.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;

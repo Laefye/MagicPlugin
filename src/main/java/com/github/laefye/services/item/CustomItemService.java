@@ -1,7 +1,7 @@
 package com.github.laefye.services.item;
 
 import com.github.laefye.MagicPlugin;
-import com.github.laefye.tools.ItemTools;
+import com.github.laefye.craft.ItemTools;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;

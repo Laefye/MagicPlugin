@@ -1,4 +1,4 @@
-package com.github.laefye.tools;
+package com.github.laefye.craft;
 
 import net.minecraft.nbt.NBTTagCompound;
 

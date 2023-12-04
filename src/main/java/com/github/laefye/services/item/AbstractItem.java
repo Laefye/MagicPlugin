@@ -1,7 +1,7 @@
 package com.github.laefye.services.item;
 
-import com.github.laefye.tools.Compound;
-import com.github.laefye.tools.ItemTools;
+import com.github.laefye.craft.Compound;
+import com.github.laefye.craft.ItemTools;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
