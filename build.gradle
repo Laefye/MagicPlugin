@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.github.laefye'
+version = '1.20.2-1'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
+}
+
+dependencies {
+    compileOnly files('libs/purpur-1.20.2.jar')
+    compileOnly 'io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT'
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+jar {
+
+}
