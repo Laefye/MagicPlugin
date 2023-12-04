@@ -1,6 +1,5 @@
 package com.github.laefye;
 
-import com.github.laefye.commands.GiveCommand;
 import com.github.laefye.services.CustomItemService;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,11 +17,6 @@ public class MagicPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         customItemService = registerService(CustomItemService.class, new CustomItemService(this));
-        Optional.ofNullable(getCommand("magicgive"))
-                .ifPresent(command -> command.setExecutor(new GiveCommand(this)));
-
-        // Example
-        customItemService.register(PoopItem.ID, new PoopItem());
     }
 
     @Override
