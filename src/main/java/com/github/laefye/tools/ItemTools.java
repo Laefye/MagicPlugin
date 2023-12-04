@@ -17,7 +17,7 @@ public class ItemTools {
 
     public static ItemStack setItemTag(ItemStack itemStack, Compound compound) {
         var unwrapped = CraftItemStack.unwrap(itemStack);
-        unwrapped.c(compound.getCompound());
+        unwrapped.c(compound.getNativeCompound());
         return CraftItemStack.asBukkitCopy(unwrapped);
     }
 }

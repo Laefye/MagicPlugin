@@ -32,7 +32,7 @@ public class Compound {
         return this;
     }
 
-    public NBTTagCompound getCompound() {
+    public NBTTagCompound getNativeCompound() {
         return compound;
     }
 

@@ -1,4 +1,4 @@
-package com.github.laefye.services;
+package com.github.laefye.services.item;
 
 import com.github.laefye.MagicPlugin;
 import com.github.laefye.tools.ItemTools;

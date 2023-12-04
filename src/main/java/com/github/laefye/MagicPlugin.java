@@ -1,10 +1,8 @@
 package com.github.laefye;
 
-import com.github.laefye.services.CustomItemService;
+import com.github.laefye.services.item.CustomItemService;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Optional;
 
 public class MagicPlugin extends JavaPlugin {
     private CustomItemService customItemService;
@@ -22,9 +20,5 @@ public class MagicPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         getServer().getServicesManager().unregister(customItemService);
-    }
-
-    public CustomItemService getCustomItemService() {
-        return customItemService;
     }
 }
