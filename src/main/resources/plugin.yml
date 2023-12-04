@@ -1,4 +1,4 @@
 name: MagicPlugin
-version: '1.20.2-1'
+version: '${version}'
 main: com.github.laefye.MagicPlugin
 api-version: '1.20'
