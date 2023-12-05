@@ -73,6 +73,10 @@ public class Compound {
             if (jsonObject.get(key) instanceof JsonPrimitive primitive) {
                 if (primitive.isNumber()) {
                     compound.putInt(key, primitive.getAsInt());
+                } else if (primitive.isString()) {
+                    compound.putString(key, primitive.getAsString());
+                } else if (primitive.isBoolean()) {
+                    compound.putBoolean(key, primitive.getAsBoolean());
                 }
             }
             if (jsonObject.get(key) instanceof JsonObject nextLayer) {
