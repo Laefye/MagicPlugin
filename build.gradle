@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.github.laefye'
-version = '1.20.2-1'
+version = '1.20.2-2'
 
 repositories {
     mavenCentral()

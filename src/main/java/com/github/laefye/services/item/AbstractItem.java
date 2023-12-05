@@ -17,7 +17,7 @@ public class AbstractItem {
     private ItemStack craft(String id) {
         var item = new ItemStack(material);
         var tag = ItemTools.getOrCreateItemTag(item);
-        tag.setString(CustomItemService.ID_TAG, id);
+        tag.putString(CustomItemService.ID_TAG, id);
         tag = compound(tag);
         item = ItemTools.setItemTag(item, tag);
         Optional.ofNullable(item.getItemMeta())
