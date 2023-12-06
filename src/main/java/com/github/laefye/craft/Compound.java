@@ -67,8 +67,7 @@ public class Compound {
         return compound.e(key);
     }
 
-    public static Compound fromJsonObject(JsonObject jsonObject) {
-        var compound = new Compound();
+    public static Compound appendFromJsonObject(Compound compound, JsonObject jsonObject) {
         for (var key : jsonObject.asMap().keySet()) {
             if (jsonObject.get(key) instanceof JsonPrimitive primitive) {
                 if (primitive.isNumber()) {
@@ -80,7 +79,7 @@ public class Compound {
                 }
             }
             if (jsonObject.get(key) instanceof JsonObject nextLayer) {
-                compound.putCompound(key, fromJsonObject(nextLayer));
+                compound.putCompound(key, appendFromJsonObject(new Compound(), nextLayer));
             }
         }
         return compound;
