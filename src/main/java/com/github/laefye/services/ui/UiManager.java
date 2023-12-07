@@ -26,17 +26,17 @@ public class UiManager implements Listener {
     }
 
     @EventHandler
-    public void click(InventoryClickEvent event) {
+    public void onClick(InventoryClickEvent event) {
         getUi(event.getInventory()).ifPresent(ui -> ui.click(event));
     }
 
     @EventHandler
-    public void drag(InventoryDragEvent event) {
+    public void onDrag(InventoryDragEvent event) {
         getUi(event.getInventory()).ifPresent(ui -> ui.drag(event));
     }
 
     @EventHandler
-    public void move(InventoryMoveItemEvent event) {
+    public void onMove(InventoryMoveItemEvent event) {
         getUi(event.getDestination()).ifPresent(ui -> ui.move(event));
     }
 
@@ -52,6 +52,7 @@ public class UiManager implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
         getUi(event.getInventory()).ifPresent(ui -> {
+            ui.close(event);
             ui.inventory.close();
             uis.remove(ui);
         });

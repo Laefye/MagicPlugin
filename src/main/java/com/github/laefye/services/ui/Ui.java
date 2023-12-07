@@ -27,4 +27,8 @@ public abstract class Ui {
     public void pickup(InventoryPickupItemEvent event) {
 
     }
+
+    public void close(InventoryCloseEvent event) {
+
+    }
 }
