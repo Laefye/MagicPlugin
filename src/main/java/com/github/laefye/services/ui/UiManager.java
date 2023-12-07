@@ -22,6 +22,7 @@ public class UiManager implements Listener {
     public void open(Player player, Ui ui) {
         player.closeInventory();
         player.openInventory(ui.inventory);
+        uis.add(ui);
     }
 
     @EventHandler
