@@ -53,7 +53,6 @@ public class UiManager implements Listener {
     public void onClose(InventoryCloseEvent event) {
         getUi(event.getInventory()).ifPresent(ui -> {
             ui.close(event);
-            ui.inventory.close();
             uis.remove(ui);
         });
     }
