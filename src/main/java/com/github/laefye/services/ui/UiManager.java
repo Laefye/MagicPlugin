@@ -4,10 +4,11 @@ import com.github.laefye.MagicPlugin;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.event.inventory.*;
+import org.bukkit.inventory.Inventory;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class UiManager implements Listener {
     private final MagicPlugin plugin;
@@ -24,22 +25,34 @@ public class UiManager implements Listener {
     }
 
     @EventHandler
-    public void onInteract(InventoryInteractEvent event) {
-        for (var ui : uis) {
-            if (ui.inventory == event.getInventory()) {
-                ui.dispatchEvent(event);
-            }
-        }
+    public void click(InventoryClickEvent event) {
+        getUi(event.getInventory()).ifPresent(ui -> ui.click(event));
+    }
+
+    @EventHandler
+    public void drag(InventoryDragEvent event) {
+        getUi(event.getInventory()).ifPresent(ui -> ui.drag(event));
+    }
+
+    @EventHandler
+    public void move(InventoryMoveItemEvent event) {
+        getUi(event.getDestination()).ifPresent(ui -> ui.move(event));
+    }
+
+    @EventHandler
+    public void onPickup(InventoryPickupItemEvent event) {
+        getUi(event.getInventory()).ifPresent(ui -> ui.pickup(event));
+    }
+
+    private Optional<Ui> getUi(Inventory inventory) {
+        return uis.stream().filter(ui -> ui.inventory == inventory).findAny();
     }
 
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
-        for (var ui : uis) {
-            if (ui.inventory == event.getInventory()) {
-                ui.inventory.close();
-                uis.remove(ui);
-                break;
-            }
-        }
+        getUi(event.getInventory()).ifPresent(ui -> {
+            ui.inventory.close();
+            uis.remove(ui);
+        });
     }
 }
