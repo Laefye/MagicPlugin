@@ -1,24 +1,30 @@
 package com.github.laefye;
 
-import com.github.laefye.services.item.CustomItemService;
-import org.bukkit.plugin.ServicePriority;
+import com.github.laefye.services.item.ItemManager;
+import com.github.laefye.services.ui.UiManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicPlugin extends JavaPlugin {
-    private CustomItemService customItemService;
+    private ItemManager itemManager;
+    private UiManager uiManager;
 
-    private <T> T registerService(Class<T> cl, T provider) {
-        getServer().getServicesManager().register(cl, provider, this, ServicePriority.Normal);
-        return provider;
-    }
 
     @Override
     public void onEnable() {
-        customItemService = registerService(CustomItemService.class, new CustomItemService(this));
+        itemManager = new ItemManager(this);
+        uiManager = new UiManager(this);
     }
 
-    @Override
-    public void onDisable() {
-        getServer().getServicesManager().unregister(customItemService);
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
+
+    public UiManager getUiManager() {
+        return uiManager;
+    }
+
+    public static MagicPlugin getInstance() {
+        return (MagicPlugin) Bukkit.getServer().getPluginManager().getPlugin("MagicPlugin");
     }
 }

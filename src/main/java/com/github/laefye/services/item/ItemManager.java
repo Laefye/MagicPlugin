@@ -7,29 +7,29 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Optional;
 
-public class CustomItemService {
+public class ItemManager {
     private final MagicPlugin plugin;
     public static final String ID_TAG = "MagicPluginItemID";
-    private final HashMap<String, AbstractItem> items = new HashMap<>();
+    private final HashMap<String, BaseItem> items = new HashMap<>();
 
-    public CustomItemService(MagicPlugin plugin) {
+    public ItemManager(MagicPlugin plugin) {
         this.plugin = plugin;
     }
 
-    public AbstractItem register(String id, AbstractItem abstractItem) {
-        this.items.put(id, abstractItem);
-        return abstractItem;
+    public BaseItem register(String id, BaseItem baseItem) {
+        this.items.put(id, baseItem);
+        return baseItem;
     }
 
-    public Optional<AbstractItem> get(String id) {
+    public Optional<BaseItem> get(String id) {
         return Optional.ofNullable(items.get(id));
     }
 
     public Optional<ItemStack> give(String id) {
-        return get(id).map(abstractItem -> abstractItem.create(id));
+        return get(id).map(baseItem -> baseItem.create(id));
     }
 
-    public Optional<AbstractItem> cast(ItemStack itemStack) {
+    public Optional<BaseItem> cast(ItemStack itemStack) {
         var tag = ItemTools.getItemTag(itemStack);
         if (tag.isEmpty()) {
             return Optional.empty();

@@ -8,16 +8,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Optional;
 
-public class AbstractItem {
+public class BaseItem {
     private final Material material;
-    public AbstractItem(Material material) {
+    public BaseItem(Material material) {
         this.material = material;
     }
 
     private ItemStack craft(String id) {
         var item = new ItemStack(material);
         var tag = ItemTools.getOrCreateItemTag(item);
-        tag.putString(CustomItemService.ID_TAG, id);
+        tag.putString(ItemManager.ID_TAG, id);
         tag = compound(tag);
         item = ItemTools.setItemTag(item, tag);
         Optional.ofNullable(item.getItemMeta())
